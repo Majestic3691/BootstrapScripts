@@ -1,0 +1,18 @@
+#!/bin/bash
+# Prerequisites: Install updates, set time zones, install GCC and make"
+yum -y update
+ln -sf /usr/share/zoneinfo/America/Chicago \/etc/localtime
+yum -y install gcc gcc-c++ make
+#Download, Untar and Make Redis
+cd /usr/local/src
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+rm redis-stable.tar -f
+cd redis-stable
+sudo make
+
+#Post Bootstrap
+# need tcl 8.5 or greater
+#sudo yum -y install tcl
+#sudo make test
+#Should receive a "All tests passed without errors!"
